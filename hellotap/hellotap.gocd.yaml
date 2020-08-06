@@ -41,5 +41,9 @@ pipelines:
                 command: make
                 arguments:
                 - "zip"
-
+            - exec:
+                working_directory: hellotap
+                command: make
+                arguments:
+                - "upload_zip"
 
