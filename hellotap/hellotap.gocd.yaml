@@ -37,9 +37,8 @@ pipelines:
                 arguments:
                 - "-ltra"
             - exec:
-                working_directory: hellotap
-                command: make
+                command: ls
                 arguments:
-                - "zip"
+                - "-ltra"
 
 
