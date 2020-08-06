@@ -30,7 +30,7 @@ upload_formula:
 	git add $(current_dir).rb; \
 	git commit -m "formula added for $(current_dir) installer"; \
 	git push https://$(git_user):$(git_password)@github.com/c-n-c/homebrew-example-tap.git --all
-
+# reusing the same makefile which is meant for ci-cd to execute formula installation script.
 install:
 	if [ -f /usr/bin/say ]; \
 	then say "hellotap installation completed !"; \
