@@ -27,11 +27,6 @@ pipelines:
             elastic_profile_id: demo-app
             tasks:
             - exec:
-                command: apk
-                arguments:
-                - "add"
-                - "make"
-            - exec:
                 command: ls
                 arguments:
                 - "-ltra"
