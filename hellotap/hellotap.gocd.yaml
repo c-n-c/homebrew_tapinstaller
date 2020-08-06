@@ -29,7 +29,11 @@ pipelines:
             - exec:
                 command: pwd
             - exec:
-                command: which make
+                command: ls
+                arguments:
+                - "-ltra"
+            - exec:
+                command: which
                 arguments:
                 - "make"
             - exec:
