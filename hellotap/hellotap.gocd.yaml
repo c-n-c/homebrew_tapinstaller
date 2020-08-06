@@ -21,7 +21,7 @@ pipelines:
           GITUSR: AES:4dUpg629SixrCLTGt5uOPw==:3KlNE8Iva0VUdj/qc/15HA==
           GITPWD: AES:CybIMbbiqzaYgu3g892Y1w==:ZO3nQzwAdC/2KKwPnGZC6g==
           ARTUSR: AES:ZAo4Jxsla3LJkrn8OV/VwQ==:pW8z9nvc47a+zDlAmQ405w==
-          ARTPWD: AES:MdBgc8rolj+fA1j3rIm8uw==:k8c3DzRbX32wrMAVT1M9Rw==
+          ARTPWD: AES:+WFVIh/1DerDjHBtipkxUQ==:D3N27bsmfPrBQ2zal/vvYA==
         fetch_materials: true
         keep_artifacts: false
         clean_workspace: false
