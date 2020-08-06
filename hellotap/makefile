@@ -1,5 +1,5 @@
 current_dir = $(notdir $(shell pwd))
-
+change_id = ${COMMIT}
 art_user="${ARTUSR}"
 art_password="${ARTPWD}"
 art_server_string="${ARTIFACTORY}/artifactory/generic-local"
@@ -29,9 +29,9 @@ upload_formula:
 	git config --local user.name "gocd user"; \
 	git config --local user.email "gocd_user@someorg.com"; \
 	git add $(current_dir).rb; \
-	git commit -m "formula added for $(current_dir) installer"; \
+	git commit -m "formula added for $(current_dir) installer changeid: $(change_id)"; \
 	git push https://$(git_user):$(git_password)@github.com/c-n-c/homebrew-example-tap.git --all
-# reusing the same makefile which is meant for ci-cd to execute formula installation script.
+# reusing the same makefile which is meant for ci-cd to execute inside formula installation script.
 install:
 	if [ -f /usr/bin/say ]; \
 	then say "hellotap installation completed !"; \
