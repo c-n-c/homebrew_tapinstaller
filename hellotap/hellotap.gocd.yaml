@@ -46,7 +46,7 @@ pipelines:
                 command: make
                 arguments:
                 - "generate_formula"
-                - "VERSION=${COUNT}"
+                - VERSION=${COUNT}
             - exec:
                 working_directory: hellotap
                 command: make
