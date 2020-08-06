@@ -6,6 +6,7 @@ art_server_string="${ARTIFACTORY}/artifactory/generic-local"
 
 git_user=${GITUSR}
 git_password=${GITPWD}
+version=${VERSION}
 
 zip: install.sh
 	zip $(current_dir).zip install.sh testfile.txt makefile
@@ -17,7 +18,7 @@ upload_zip:
 generate_formula:
 	$(eval checksum =  $(shell echo `sha256sum $(current_dir).zip | cut -d " " -f 1`))
 	$(eval uri = http:\/\/${ARTIFACTORY}\/artifactory\/test\/$(current_dir).zip)
-	@sed -e "s/SHASUM/$(checksum)/" -e "s/URI/$(uri)/" formula.rb > $(current_dir).rb
+	@sed -e "s/SHASUM/$(checksum)/" -e "s/URI/$(uri)/" -e "s/version/$(version)/" formula.rb > $(current_dir).rb
 
 
 upload_formula:
