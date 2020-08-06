@@ -5,7 +5,7 @@ class Hellotap < Formula
   desc "Installation of demo hellotap"
   homepage "https://abcdbank.com/"
   url "URI"
-  version "$GO_PIPELINE_COUNTER"
+  version "${GO_PIPELINE_COUNTER}"
   sha256 "SHASUM"
 
   bottle :unneeded
