@@ -33,11 +33,6 @@ pipelines:
             tasks:
             - exec:
                 working_directory: hellotap
-                command: ls
-                arguments:
-                - "-ltra"
-            - exec:
-                working_directory: hellotap
                 command: make
                 arguments:
                 - "zip"
@@ -51,6 +46,7 @@ pipelines:
                 command: make
                 arguments:
                 - "generate_formula"
+                - "VERSION=${COUNT}"
             - exec:
                 working_directory: hellotap
                 command: make
