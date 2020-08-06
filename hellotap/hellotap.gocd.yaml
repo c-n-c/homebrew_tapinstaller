@@ -27,5 +27,9 @@ pipelines:
             elastic_profile_id: demo-app
             tasks:
             - exec:
+                command: pwd
+            - exec:
+                command: which make
+            - exec:
                 command: make zip
-                run_if: passed
+
