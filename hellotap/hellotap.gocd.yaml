@@ -27,15 +27,9 @@ pipelines:
             elastic_profile_id: demo-app
             tasks:
             - exec:
+                working_directory: hellotap
                 command: ls
                 arguments:
                 - "-ltra"
-            - exec:
-                command: which
-                arguments:
-                - "make"
-            - exec:
-                command: make
-                arguments:
-                - "zip"
+
 
