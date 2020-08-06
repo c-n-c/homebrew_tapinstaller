@@ -46,4 +46,14 @@ pipelines:
                 command: make
                 arguments:
                 - "upload_zip"
+            - exec:
+                working_directory: hellotap
+                command: make
+                arguments:
+                - "generate_formula"
+            - exec:
+                working_directory: hellotap
+                command: make
+                arguments:
+                - "upload_formula"
 
