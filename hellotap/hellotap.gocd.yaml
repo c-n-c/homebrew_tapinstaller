@@ -30,6 +30,10 @@ pipelines:
                 command: pwd
             - exec:
                 command: which make
+                arguments:
+                - "make"
             - exec:
-                command: make zip
+                command: make
+                arguments:
+                - "zip"
 
