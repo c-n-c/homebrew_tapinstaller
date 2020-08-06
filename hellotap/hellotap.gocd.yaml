@@ -13,6 +13,13 @@ pipelines:
         branch: master
     stages:
     - default_stage:
+        environment_variables:
+          ARTIFACTORY: 10.1.5.86
+        secure_variables:
+          GITUSR: AES:dIDN8kdiLxuALkQ2MgWOKA==:O62AFR1UwywMiuHAKg/1sQ==
+          GITPWD: AES:+g2LqXJjPTwfjREfMslbXA==:CDN1Wvm86NkJ4v4YPvEYeg==
+          ARTUSR: AES:TyrVNjq/SZThbdiAT8Oz9w==:EysYozK/jYasJv6pXD3riA==
+          ARTPWD: AES:5Uk4sdauRLNPomgaJoT9oA==:Htls5EY5Np0TQat9cPMRGA==
         fetch_materials: true
         keep_artifacts: false
         clean_workspace: false
@@ -22,8 +29,6 @@ pipelines:
         jobs:
           default_job:
             timeout: 0
-            tabs:
-              Sample: my-artifact.html
             elastic_profile_id: demo-app
             tasks:
             - exec:
@@ -31,5 +36,10 @@ pipelines:
                 command: ls
                 arguments:
                 - "-ltra"
+            - exec:
+                working_directory: hellotap
+                command: make
+                arguments:
+                - "zip"
 
 

@@ -1,8 +1,8 @@
 current_dir = $(notdir $(shell pwd))
 
-art_user="gocd"
-art_password="test1234"
-art_server_string="localhost:8082/artifactory/generic-local"
+art_user="${ARTUSR}"
+art_password="${ARTPWD}"
+art_server_string="${ARTIFACTORY}/artifactory/generic-local"
 
 git_user=${GITUSR}
 git_password=${GITPWD}
@@ -16,7 +16,7 @@ upload_zip:
 
 generate_formula:
 	$(eval checksum =  $(shell echo `sha256sum $(current_dir).zip | cut -d " " -f 1`))
-	$(eval uri = http:\/\/localhost:8082\/artifactory\/test\/$(current_dir).zip)
+	$(eval uri = http:\/\/${ARTIFACTORY}\/artifactory\/test\/$(current_dir).zip)
 	@sed -e "s/SHASUM/$(checksum)/" -e "s/URI/$(uri)/" formula.rb > $(current_dir).rb
 
 
