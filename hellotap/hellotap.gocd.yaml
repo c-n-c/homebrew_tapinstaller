@@ -79,11 +79,12 @@ pipelines:
                 source: result
                 destination: test
             - exec:
-                command: ls
-                arguments:
-                - "-ll"
-            - exec:
                 command: cp
                 arguments:
-                - "hellotap/hellotap.rb"
+                - "test/hellotap.rb"
                 - "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula"
+            - exec:
+                command: brew
+                arguments:
+                - install
+                - hellotap
