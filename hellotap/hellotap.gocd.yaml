@@ -80,7 +80,6 @@ pipelines:
                 job: build_job
                 is_file: yes
                 source: result
-                destination: result
             - exec:
                 command: ls
                 arguments:
