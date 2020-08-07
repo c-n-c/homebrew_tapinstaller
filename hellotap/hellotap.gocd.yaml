@@ -35,10 +35,10 @@ pipelines:
             artifacts:
             - build:
                 source: hellotap/hellotap.rb
-                destination: hellotap.rb
+                destination: result
             - build:
                 source: hellotap/hellotap-test.rb
-                destination: hellotap-test.rb
+                destination: result
             tasks:
             - exec:
                 working_directory: hellotap
@@ -79,27 +79,22 @@ pipelines:
                 stage: build_stage
                 job: build_job
                 is_file: yes
-                source: hellotap.rb
-                destination: hellotap.rb
-            - fetch:
-                stage: build_stage
-                job: build_job
-                is_file: yes
-                source: hellotap-test.rb
-                destination: hellotap-test.rb
+                source: result
+                destination: result
             - exec:
                 command: ls
                 arguments:
                 - "-ll"
-            - exec:
-                command: cp
-                arguments:
-                - "hellotap-test.rb"
-                - "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula"
-            - exec:
-                command: cat
-                arguments:
-                - "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap-test.rb"
+                - "result"
+#            - exec:
+#                command: cp
+#                arguments:
+#                - "hellotap-test.rb"
+#                - "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula"
+#            - exec:
+#                command: cat
+#                arguments:
+#                - "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap-test.rb"
 #            - exec:
 #                command: brew
 #                arguments:
