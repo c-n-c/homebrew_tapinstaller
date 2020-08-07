@@ -19,7 +19,7 @@ upload_zip:
 generate_formula:
 	$(eval checksum =  $(shell echo `sha256sum $(current_dir).zip | cut -d " " -f 1`))
 	$(eval uri = http:\/\/$(art_destination_string)\/artifactory\/test\/$(current_dir).zip)
-	@sed -e "s/SHASUM/$(checksum)/" -e "s/URI/$(uri)/" -e "s/VERSION/$(version)/" formula.rb > $(current_dir).rb
+	@sed -e "s/SHASUM/$(checksum)/" -e "s/URI/$(uri)/" -e "s/VERSION/$(version)/" formula.rb > $(current_dir)-test.rb
 	$(eval uri_release = http:\/\/$(art_destination_string)\/artifactory\/release\/$(current_dir).zip)
 	@sed -e "s/SHASUM/$(checksum)/" -e "s/URI/$(uri_release)/" -e "s/VERSION/$(version)/" formula.rb > $(current_dir).rb
 
