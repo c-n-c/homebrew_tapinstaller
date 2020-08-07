@@ -88,16 +88,13 @@ pipelines:
                 command: cp
                 arguments:
                 - "result/hellotap-test.rb"
-                - "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula"
-            - exec:
-                command: cat
-                arguments:
-                - "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap-test.rb"
+                - "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb"
             - exec:
                 command: brew
                 arguments:
                 - install
-                - hellotap
+                - --build-from-source
+                - /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb
             - exec:
                 command: brew
                 arguments:
