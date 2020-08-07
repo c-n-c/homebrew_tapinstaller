@@ -34,10 +34,11 @@ pipelines:
             elastic_profile_id: demo-app
             artifacts:
             - build:
-                source:
-                - hellotap/hellotap.rb
-                - hellotap/hellotap-test.rb
-                destination:
+                source: hellotap/hellotap.rb
+                destination: hellotap.rb
+            - build:
+                source: hellotap/hellotap-test.rb
+                destination: hellotap-test.rb
             tasks:
             - exec:
                 working_directory: hellotap
