@@ -73,7 +73,6 @@ pipelines:
             timeout: 0
             tasks:
             - exec:
-                working_directory: /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/
                 command: ls
                 arguments:
                 - "ltra"
