@@ -81,15 +81,25 @@ pipelines:
                 is_file: yes
                 source: hellotap.rb
                 destination: hellotap.rb
+            - fetch:
+                stage: build_stage
+                job: build_job
+                is_file: yes
+                source: hellotap-test.rb
+                destination: hellotap-test.rb
             - exec:
                 command: ls
                 arguments:
                 - "-ll"
-#            - exec:
-#                command: cp
-#                arguments:
-#                - "result/hellotap.rb"
-#                - "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula"
+            - exec:
+                command: cp
+                arguments:
+                - "hellotap-test.rb"
+                - "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula"
+            - exec:
+                command: cat
+                arguments:
+                - "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap-test.rb"
 #            - exec:
 #                command: brew
 #                arguments:
