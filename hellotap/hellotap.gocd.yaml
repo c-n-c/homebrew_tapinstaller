@@ -49,8 +49,8 @@ pipelines:
                 working_directory: hellotap
                 command: make
                 arguments:
-                - "upload_zip"
-                - artfolder="generic-local"
+                - upload_zip
+                - "artfolder='generic-local'"
             - exec:
                 working_directory: hellotap
                 command: make
@@ -142,7 +142,7 @@ pipelines:
                 command: make
                 arguments:
                 - "upload_zip"
-                - artfolder="release-local"
+                - "artfolder='release-local'"
             - exec:
                 working_directory: result
                 command: make
