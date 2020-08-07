@@ -78,7 +78,6 @@ pipelines:
             - fetch:
                 stage: build_stage
                 job: build_job
-                is_file: yes
                 source: result
             - exec:
                 command: ls
