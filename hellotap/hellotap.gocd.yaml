@@ -79,6 +79,11 @@ pipelines:
                 source: result
                 destination: test
             - exec:
+                command: pwd && ls
+                arguments:
+                - "-ll"
+                - "test"
+            - exec:
                 command: cp
                 arguments:
                 - "test/hellotap.rb"
