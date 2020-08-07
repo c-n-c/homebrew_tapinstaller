@@ -35,7 +35,7 @@ pipelines:
             artifacts:
             - build:
                 source: hellotap/hellotap.rb
-                destination: ''
+                destination: 'result'
             tasks:
             - exec:
                 working_directory: hellotap
@@ -72,6 +72,12 @@ pipelines:
             - "mac"
             timeout: 0
             tasks:
+            - fetch:
+                stage: build_stage
+                job: build_job
+                is_file: yes
+                source: result
+                destination: test
             - exec:
                 command: ls
                 arguments:
