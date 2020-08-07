@@ -34,7 +34,7 @@ pipelines:
             elastic_profile_id: demo-app
             artifacts:
             - build:
-                source: hellotap.rb
+                source: hellotap/hellotap.rb
                 destination: ''
             tasks:
             - exec:
