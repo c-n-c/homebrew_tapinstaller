@@ -34,7 +34,9 @@ pipelines:
             elastic_profile_id: demo-app
             artifacts:
             - build:
-                source: hellotap/hellotap.rb
+                source:
+                - hellotap/hellotap.rb
+                - hellotap/hellotap-test.rb
                 destination:
             tasks:
             - exec:
@@ -82,7 +84,6 @@ pipelines:
                 command: ls
                 arguments:
                 - "-ll"
-                - "result"
 #            - exec:
 #                command: cp
 #                arguments:
