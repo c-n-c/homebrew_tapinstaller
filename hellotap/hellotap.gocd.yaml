@@ -67,7 +67,7 @@ pipelines:
           type: success
           allow_only_on_success: false
         jobs:
-          default_job:
+          test_job:
             resources:
             - "mac"
             timeout: 0
@@ -75,4 +75,10 @@ pipelines:
             - exec:
                 command: ls
                 arguments:
-                - "-ltra"
+                - "-ll"
+                - "hellotap"
+            - exec:
+                command: cp
+                arguments:
+                - "hellotap/hellotap.rb"
+                - "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula"
