@@ -39,6 +39,9 @@ pipelines:
             - build:
                 source: hellotap/hellotap-test.rb
                 destination: result
+            - build:
+                source: hellotap/hellotap.zip
+                destination: result
             tasks:
             - exec:
                 working_directory: hellotap
@@ -75,11 +78,6 @@ pipelines:
                 stage: build_stage
                 job: build_job
                 source: result
-            - exec:
-                command: ls
-                arguments:
-                - "-ll"
-                - "result"
             - exec:
                 command: cp
                 arguments:
@@ -125,18 +123,6 @@ pipelines:
                 stage: build_stage
                 job: build_job
                 source: result
-            - exec:
-                command: ls
-                arguments:
-                - "-ll"
-                - "result"
-            - exec:
-                working_directory: result
-                command: curl
-                arguments:
-                - -X
-                - GET
-                - http://$ARTIFACTORY/artifactory/test/hellotap.zip
             - exec:
                 working_directory: result
                 command: make
