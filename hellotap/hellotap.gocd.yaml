@@ -124,6 +124,11 @@ pipelines:
                 job: build_job
                 source: result
             - exec:
+                command: cp
+                arguments:
+                - "result/hellotap.zip"
+                - "hellotap/hellotap.zip"
+            - exec:
                 working_directory: result
                 command: make
                 arguments:
