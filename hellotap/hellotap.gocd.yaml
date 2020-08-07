@@ -42,6 +42,9 @@ pipelines:
             - build:
                 source: hellotap/hellotap.zip
                 destination: result
+            - build:
+                source: hellotap/makefile
+                destination: result
             tasks:
             - exec:
                 working_directory: hellotap
@@ -124,12 +127,7 @@ pipelines:
                 job: build_job
                 source: result
             - exec:
-                command: cp
-                arguments:
-                - "result/hellotap.zip"
-                - "hellotap/hellotap.zip"
-            - exec:
-                working_directory: hellotap
+                working_directory: result
                 command: make
                 arguments:
                 - "upload_zip"
