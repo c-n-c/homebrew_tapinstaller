@@ -50,6 +50,7 @@ pipelines:
                 command: make
                 arguments:
                 - "upload_zip"
+                - "artfolder=generic-local"
             - exec:
                 working_directory: hellotap
                 command: make
@@ -99,50 +100,51 @@ pipelines:
                 command: rm
                 arguments:
                 - /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb
-#    - publish_stage:
-#        environment_variables:
-#          ARTIFACTORY: 10.1.5.86
-#          VERSION: ${GO_PIPELINE_COUNTER}
-#          COMMIT: ${GO_REVISION_GIT}
-#        secure_variables:
-#          ARTUSR: AES:ZAo4Jxsla3LJkrn8OV/VwQ==:pW8z9nvc47a+zDlAmQ405w==
-#          ARTPWD: AES:+WFVIh/1DerDjHBtipkxUQ==:D3N27bsmfPrBQ2zal/vvYA==
-#          GITUSR: AES:4dUpg629SixrCLTGt5uOPw==:3KlNE8Iva0VUdj/qc/15HA==
-#          GITPWD: AES:CybIMbbiqzaYgu3g892Y1w==:ZO3nQzwAdC/2KKwPnGZC6g==
-#        fetch_materials: true
-#        keep_artifacts: false
-#        clean_workspace: false
-#        approval:
-#          type: success
-#          allow_only_on_success: false
-#        jobs:
-#          publish_job:
-#            timeout: 0
-#            elastic_profile_id: demo-app
-#            tasks:
-#            - fetch:
-#                stage: build_stage
-#                job: build_job
-#                source: result
-#            - exec:
-#                command: ls
-#                arguments:
-#                - "-ll"
-#                - "result"
-#            - exec:
-#                command:
-#            - exec:
-#                command: brew
-#                arguments:
-#                - install
-#                - --build-from-source
-#                - /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb
-#            - exec:
-#                command: brew
-#                arguments:
-#                - uninstall
-#                - hellotap
-#            - exec:
-#                command: rm
-#                arguments:
-#                - /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb
+    - publish_stage:
+        environment_variables:
+          ARTIFACTORY: 10.1.5.86
+          VERSION: ${GO_PIPELINE_COUNTER}
+          COMMIT: ${GO_REVISION_GIT}
+        secure_variables:
+          ARTUSR: AES:ZAo4Jxsla3LJkrn8OV/VwQ==:pW8z9nvc47a+zDlAmQ405w==
+          ARTPWD: AES:+WFVIh/1DerDjHBtipkxUQ==:D3N27bsmfPrBQ2zal/vvYA==
+          GITUSR: AES:4dUpg629SixrCLTGt5uOPw==:3KlNE8Iva0VUdj/qc/15HA==
+          GITPWD: AES:CybIMbbiqzaYgu3g892Y1w==:ZO3nQzwAdC/2KKwPnGZC6g==
+        fetch_materials: true
+        keep_artifacts: false
+        clean_workspace: false
+        approval:
+          type: success
+          allow_only_on_success: false
+        jobs:
+          publish_job:
+            timeout: 0
+            elastic_profile_id: demo-app
+            tasks:
+            - fetch:
+                stage: build_stage
+                job: build_job
+                source: result
+            - exec:
+                command: ls
+                arguments:
+                - "-ll"
+                - "result"
+            - exec:
+                working_directory: result
+                command: curl
+                arguments:
+                - -X
+                - GET
+                - http://$ARTIFACTORY/artifactory/test/hellotap.zip
+            - exec:
+                working_directory: result
+                command: make
+                arguments:
+                - "upload_zip"
+                - "artfolder=release-local"
+            - exec:
+                working_directory: result
+                command: make
+                arguments:
+                - "upload_formula"
