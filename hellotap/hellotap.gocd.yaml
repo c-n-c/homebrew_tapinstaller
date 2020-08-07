@@ -129,7 +129,7 @@ pipelines:
                 - "result/hellotap.zip"
                 - "hellotap/hellotap.zip"
             - exec:
-                working_directory: result
+                working_directory: hellotap
                 command: make
                 arguments:
                 - "upload_zip"
