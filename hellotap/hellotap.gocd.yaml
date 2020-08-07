@@ -75,4 +75,4 @@ pipelines:
             - exec:
                 command: ls
                 arguments:
-                - "ltra"
+                - "-ltra"
