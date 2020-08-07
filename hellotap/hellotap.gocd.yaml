@@ -79,7 +79,7 @@ pipelines:
                 source: result
                 destination: test
             - exec:
-                command: pwd && ls
+                command: ls
                 arguments:
                 - "-ll"
                 - "test"
