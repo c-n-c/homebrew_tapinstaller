@@ -77,19 +77,22 @@ pipelines:
                 job: build_job
                 is_file: yes
                 source: result
-                destination: test
             - exec:
                 command: ls
                 arguments:
                 - "-ll"
-                - "test"
-            - exec:
-                command: cp
-                arguments:
-                - "test/hellotap.rb"
-                - "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula"
-            - exec:
-                command: brew
-                arguments:
-                - install
-                - hellotap
+#            - exec:
+#                command: cp
+#                arguments:
+#                - "test/hellotap.rb"
+#                - "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula"
+#            - exec:
+#                command: brew
+#                arguments:
+#                - install
+#                - hellotap
+#            - exec:
+#                command: brew
+#                arguments:
+#                - uninstall
+#                - hellotap
