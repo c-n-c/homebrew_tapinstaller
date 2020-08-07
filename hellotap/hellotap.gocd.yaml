@@ -35,7 +35,7 @@ pipelines:
             artifacts:
             - build:
                 source: hellotap/hellotap.rb
-                destination: 'result'
+                destination:
             tasks:
             - exec:
                 working_directory: hellotap
@@ -76,7 +76,8 @@ pipelines:
                 stage: build_stage
                 job: build_job
                 is_file: yes
-                source: result
+                source: hellotap.rb
+                destination: hellotap.rb
             - exec:
                 command: ls
                 arguments:
