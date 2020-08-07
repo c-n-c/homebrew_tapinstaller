@@ -27,12 +27,12 @@ generate_formula:
 upload_formula:
 	rm -rf /tmp/example-tap
 	git clone https://github.com/c-n-c/homebrew-example-tap.git /tmp/example-tap
-	cp $(current_dir).rb /tmp/example-tap/
+	cp hellotap.rb /tmp/example-tap/
 	cd /tmp/example-tap; \
 	git config --local user.name "gocd user"; \
 	git config --local user.email "gocd_user@someorg.com"; \
 	git add $(current_dir).rb; \
-	git commit -m "formula added for $(current_dir) installer changeid: $(change_id)"; \
+	git commit -m "formula added for hellotap installer changeid: $(change_id)"; \
 	git push https://$(git_user):$(git_password)@github.com/c-n-c/homebrew-example-tap.git --all
 # reusing the same makefile which is meant for ci-cd to execute inside formula installation script.
 install:
