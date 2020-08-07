@@ -84,22 +84,22 @@ pipelines:
                 arguments:
                 - "-ll"
                 - "result"
-#            - exec:
-#                command: cp
-#                arguments:
-#                - "hellotap-test.rb"
-#                - "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula"
-#            - exec:
-#                command: cat
-#                arguments:
-#                - "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap-test.rb"
-#            - exec:
-#                command: brew
-#                arguments:
-#                - install
-#                - hellotap
-#            - exec:
-#                command: brew
-#                arguments:
-#                - uninstall
-#                - hellotap
+            - exec:
+                command: cp
+                arguments:
+                - "result/hellotap-test.rb"
+                - "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula"
+            - exec:
+                command: cat
+                arguments:
+                - "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap-test.rb"
+            - exec:
+                command: brew
+                arguments:
+                - install
+                - hellotap
+            - exec:
+                command: brew
+                arguments:
+                - uninstall
+                - hellotap
