@@ -89,25 +89,23 @@ pipelines:
             - exec:
                 command: brew
                 arguments:
-                - "test"
-                - "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb"
-#
-# integration testing
-#            - exec:
-#                command: brew
-#                arguments:
-#                - install
-#                - --build-from-source
-#                - /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb
-#            - exec:
-#                command: brew
-#                arguments:
-#                - uninstall
-#                - hellotap
-#            - exec:
-#                command: rm
-#                arguments:
-#                - /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb
+                - install
+                - --build-from-source
+                - /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb
+            - exec:
+                command: brew
+                arguments:
+                - test
+                - /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb
+            - exec:
+                command: brew
+                arguments:
+                - uninstall
+                - hellotap
+            - exec:
+                command: rm
+                arguments:
+                - /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb
     - publish_stage:
         environment_variables:
           ARTIFACTORY: 10.1.5.86
