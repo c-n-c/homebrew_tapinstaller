@@ -10,7 +10,7 @@ version=${VERSION}
 art_destination_string=127.0.0.1
 
 zip: install.sh
-	@echo version > testfile.txt
+	@echo $(version) > testfile.txt
 	zip $(current_dir).zip install.sh testfile.txt makefile
 
 upload_zip:
