@@ -81,7 +81,7 @@ pipelines:
                 stage: build_stage
                 job: build_job
                 source: hellotap
-            - exec:
+            - exec: &clean_slate
                 command: bash
                 arguments:
                 - -c
@@ -107,6 +107,7 @@ pipelines:
                 arguments:
                 - test
                 - /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb
+            - exec: *clean_slate
     - publish_stage:
         environment_variables:
           ARTIFACTORY: 10.1.5.86
