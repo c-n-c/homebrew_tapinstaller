@@ -82,6 +82,12 @@ pipelines:
                 job: build_job
                 source: hellotap
             - exec:
+                command: bash
+                arguments:
+                - "if [ -f /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb ]; then \
+                rm -rf /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb; \
+                fi"
+            - exec:
                 command: cp
                 arguments:
                 - "hellotap/hellotap-test.rb"

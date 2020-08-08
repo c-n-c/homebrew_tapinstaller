@@ -19,6 +19,6 @@ class Hellotap < Formula
   end
 
   test do
-    assert_match revision.to_s, shell_output("cat #{prefix}/testfile.txt")
+    assert_equal version, shell_output("cat #{prefix}/testfile.txt")
   end
 end
