@@ -13,6 +13,8 @@ zip: install.sh
 	zip $(current_dir).zip install.sh testfile.txt makefile
 
 upload_zip:
+	$(eval checksum =  $(shell echo `sha256sum $(current_dir).zip | cut -d " " -f 1`))
+	@echo "Upload checksum: $(checksum)"
 	curl -v --user $(art_user):$(art_password) --data-binary @$(current_dir).zip -X PUT "http://$(art_server_string)$(artfolder)/$(current_dir).zip"
 
 
