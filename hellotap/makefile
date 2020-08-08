@@ -40,7 +40,7 @@ upload_formula:
 # reusing the same makefile which is meant for ci-cd to execute inside formula installation script.
 install:
 	if [ -f /usr/bin/say ]; \
-	then say "hellotap installation completed !"; \
+	then say "MAC SAYS! hello tap installation completed"; \
 	fi
 
 

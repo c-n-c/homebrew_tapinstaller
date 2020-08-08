@@ -84,6 +84,7 @@ pipelines:
             - exec:
                 command: bash
                 arguments:
+                - -c
                 - "if [ -f /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb ]; then \
                 rm -rf /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb; \
                 fi"
