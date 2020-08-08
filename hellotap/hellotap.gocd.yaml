@@ -35,16 +35,16 @@ pipelines:
             artifacts:
             - build:
                 source: hellotap/hellotap.rb
-                destination: result
+                destination: hellotap
             - build:
                 source: hellotap/hellotap-test.rb
-                destination: result
+                destination: hellotap
             - build:
                 source: hellotap/hellotap.zip
-                destination: result
+                destination: hellotap
             - build:
                 source: hellotap/makefile
-                destination: result
+                destination: hellotap
             tasks:
             - exec:
                 working_directory: hellotap
@@ -80,11 +80,11 @@ pipelines:
             - fetch:
                 stage: build_stage
                 job: build_job
-                source: result
+                source: hellotap
             - exec:
                 command: cp
                 arguments:
-                - "result/hellotap-test.rb"
+                - "hellotap/hellotap-test.rb"
                 - "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb"
             - exec:
                 command: brew
@@ -125,15 +125,15 @@ pipelines:
             - fetch:
                 stage: build_stage
                 job: build_job
-                source: result
+                source: hellotap
             - exec:
-                working_directory: result
+                working_directory: hellotap
                 command: make
                 arguments:
                 - "upload_zip"
                 - artfolder=release-local
             - exec:
-                working_directory: result
+                working_directory: hellotap
                 command: make
                 arguments:
                 - "upload_formula"
