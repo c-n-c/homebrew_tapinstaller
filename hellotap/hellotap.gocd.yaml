@@ -89,7 +89,7 @@ pipelines:
                 rm -rf /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb; \
                 fi; \
                 brew info hellotap; \
-                if [ `echo $?` != 0 ]; then \
+                if [ `echo $?` -eq 0 ]; then \
                 brew uninstall hellotap; fi "
             - exec:
                 command: cp
