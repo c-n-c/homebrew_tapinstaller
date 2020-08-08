@@ -87,7 +87,10 @@ pipelines:
                 - -c
                 - "if [ -f /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb ]; then \
                 rm -rf /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb; \
-                fi"
+                fi; \
+                brew info hellotap; \
+                if [ `echo $?` != 0 ]; then \
+                brew uninstall hellotap; fi "
             - exec:
                 command: cp
                 arguments:
@@ -103,15 +106,6 @@ pipelines:
                 command: brew
                 arguments:
                 - test
-                - /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb
-            - exec:
-                command: brew
-                arguments:
-                - uninstall
-                - hellotap
-            - exec:
-                command: rm
-                arguments:
                 - /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb
     - publish_stage:
         environment_variables:
