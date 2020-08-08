@@ -6,7 +6,8 @@ art_server_string=${ARTIFACTORY}/artifactory/
 git_user=${GITUSR}
 git_password=${GITPWD}
 version=${VERSION}
-# discard this variable after testing, and replace it with ${ARTIFACTORY} for changing uri.
+# discard the following variable after testing, and replace it with ${ARTIFACTORY} for changing uri of download.
+# for testing artifactory is pointing to 127.0.0.1
 art_destination_string=127.0.0.1
 
 zip: install.sh
@@ -30,12 +31,12 @@ generate_formula:
 upload_formula:
 	rm -rf /tmp/example-tap
 	git clone https://github.com/c-n-c/homebrew-example-tap.git /tmp/example-tap
-	cp hellotap.rb /tmp/example-tap/
+	cp $(current_dir).rb /tmp/example-tap/
 	cd /tmp/example-tap; \
 	git config --local user.name "gocd user"; \
 	git config --local user.email "gocd_user@someorg.com"; \
 	git add $(current_dir).rb; \
-	git commit -m "formula added for hellotap installer changeid: $(change_id)"; \
+	git commit -m "formula added for $(current_dir) installer changeid: $(change_id)"; \
 	git push https://$(git_user):$(git_password)@github.com/c-n-c/homebrew-example-tap.git --all
 # reusing the same makefile which is meant for ci-cd to execute inside formula installation script.
 install:
