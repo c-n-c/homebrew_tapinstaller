@@ -80,15 +80,18 @@ pipelines:
                 job: build_job
                 source: hellotap
             - exec: &clean_slate
+                working_directory: hellotap
                 command: make
                 arguments:
                 - cleanup_mac_agent
             - exec:
+                working_directory: hellotap
                 command: make
                 arguments:
                 - copy_test_forumula
 
             - exec:
+                working_directory: hellotap
                 command: make
                 arguments:
                 - install_tests_on_mac

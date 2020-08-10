@@ -49,7 +49,7 @@ cleanup_mac_agent:
                     brew uninstall $(current_dir); fi "
 
 copy_test_forumula:
-	cp "hellotap/$(current_dir)-test.rb" \
+	cp "$(current_dir)-test.rb" \
 	"/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/$(current_dir).rb"
 
 install_tests_on_mac:
