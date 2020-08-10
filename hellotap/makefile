@@ -45,7 +45,7 @@ cleanup_mac_agent:
                     rm -rf /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/$(current_dir).rb; \
                     fi; \
                     brew info $(current_dir); \
-                    if [ `echo $?` ]; then \
+                    if [ `echo \$?` ]; then \
                     brew uninstall $(current_dir); fi "
 
 copy_test_forumula:
