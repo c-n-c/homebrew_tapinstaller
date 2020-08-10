@@ -50,7 +50,7 @@ pipelines:
                 working_directory: hellotap
                 command: make
                 arguments:
-                - "zip"
+                - zip
             - exec:
                 working_directory: hellotap
                 command: make
@@ -61,7 +61,7 @@ pipelines:
                 working_directory: hellotap
                 command: make
                 arguments:
-                - "generate_formula"
+                - generate_formula
     - test_stage:
         fetch_materials: true
         keep_artifacts: false
@@ -132,10 +132,10 @@ pipelines:
                 working_directory: hellotap
                 command: make
                 arguments:
-                - "upload_zip"
+                - upload_zip
                 - artfolder=release-local
             - exec:
                 working_directory: hellotap
                 command: make
                 arguments:
-                - "upload_formula"
+                - upload_formula
