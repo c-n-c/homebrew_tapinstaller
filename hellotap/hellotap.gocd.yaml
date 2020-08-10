@@ -82,31 +82,23 @@ pipelines:
                 job: build_job
                 source: hellotap
             - exec: &clean_slate
-                command: bash
+                command: make
                 arguments:
-                - -c
-                - "if [ -f /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb ]; then \
-                rm -rf /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb; \
-                fi; \
-                brew info hellotap; \
-                if [ `echo $?` -eq 0 ]; then \
-                brew uninstall hellotap; fi "
+                - cleanup_mac_agent
             - exec:
-                command: cp
+                command: make
                 arguments:
-                - "hellotap/hellotap-test.rb"
-                - "/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb"
+                - copy_test_forumula
+
             - exec:
-                command: brew
+                command: make
                 arguments:
-                - install
-                - --build-from-source
-                - /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb
+                - install_tests_on_mac
+
             - exec:
-                command: brew
+                command: make
                 arguments:
-                - test
-                - /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb
+                - run_tests_on_mac
             - exec: *clean_slate
     - publish_stage:
         environment_variables:

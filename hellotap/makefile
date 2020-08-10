@@ -38,6 +38,26 @@ upload_formula:
 	git add $(current_dir).rb; \
 	git commit -m "formula added for $(current_dir) installer changeid: $(change_id)"; \
 	git push https://$(git_user):$(git_password)@github.com/c-n-c/homebrew-example-tap.git --all
+
+# CD helpers :
+cleanup_mac_agent:
+	bash -c "if [ -f /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/$(current_dir).rb ]; then \
+                    rm -rf /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/$(current_dir).rb; \
+                    fi; \
+                    brew info $(current_dir); \
+                    if [ `echo $?` ]; then \
+                    brew uninstall $(current_dir); fi "
+
+copy_test_forumula:
+	cp "hellotap/$(current_dir)-test.rb" \
+	"/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/$(current_dir).rb"
+
+install_tests_on_mac:
+	brew install --build-from-source /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb
+
+run_tests_on_mac:
+	brew test /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/hellotap.rb
+
 # reusing the same makefile which is meant for ci-cd to execute inside formula installation script.
 install:
 	if [ -f /usr/bin/say ]; \
