@@ -97,9 +97,11 @@ pipelines:
                 - install_tests_on_mac
 
             - exec:
+                working_directory: hellotap
                 command: make
                 arguments:
                 - run_tests_on_mac
+
             - exec: *clean_slate
     - publish_stage:
         environment_variables:
