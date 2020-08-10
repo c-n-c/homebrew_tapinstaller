@@ -41,12 +41,12 @@ upload_formula:
 
 # CD helpers :
 cleanup_mac_agent:
-	bash -c "if [ -f /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/$(current_dir).rb ]; then \
+	$(shell if [ -f /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/$(current_dir).rb ]; then \
                     rm -rf /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/$(current_dir).rb; \
                     fi; \
                     brew info $(current_dir); \
-                    if [ `echo \$?` ]; then \
-                    brew uninstall $(current_dir); fi "
+                    if [ `echo $?` ]; then \
+                    brew uninstall $(current_dir); fi )
 
 copy_test_forumula:
 	cp "$(current_dir)-test.rb" \
