@@ -44,7 +44,7 @@ cleanup_mac_agent:
 	if [ -f /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/$(current_dir).rb ]; then \
         rm -rf /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/$(current_dir).rb; \
     fi; \
-    if [ `brew info $(current_dir) | grep "Not installed" -c` == 0 ]; then \
+    if [ `brew list | grep $(current_dir) -c` == 1 ]; then \
         brew uninstall $(current_dir); \
     fi
 
